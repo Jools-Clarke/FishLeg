@@ -19,7 +19,7 @@ sys.path.append("../src")
 
 from optim.FishLeg import FISH_LIKELIHOODS
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+#os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 seed = 13
 torch.manual_seed(seed)

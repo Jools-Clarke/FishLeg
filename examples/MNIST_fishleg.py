@@ -21,7 +21,7 @@ sys.path.append("../src")
 
 from optim.FishLeg import FishLeg, FISH_LIKELIHOODS, initialise_FishModel
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+#os.environ["CUDA_VISIBLE_DEVICES"] = "1" #this sets the GPU to use, the second GPU on the machine is used for this example
 
 seed = 13
 torch.manual_seed(seed)
@@ -29,7 +29,9 @@ torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.deterministic = True
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# device = "cpu"
+try: print(f"## using device {torch.cuda.get_device_name(0)}")
+except: print(f'##No cuda GPU, using device {device} ##')
+
 
 dataset = read_data_sets("MNIST", "../data/", if_autoencoder=True)
 
